@@ -37,8 +37,8 @@ function initializeEarthCanvas() {
 
     // Create a container for the canvas
     const canvasContainer = createDiv();
-    canvasContainer.style('width', '600px');
-    canvasContainer.style('height', '400px');
+    canvasContainer.style('width', '100%');
+    canvasContainer.style('height', 'calc(100vw * 0.4)'); // Maintain aspect ratio based on width
     canvasContainer.style('margin', '20px auto 0 auto');
     canvasContainer.style('position', 'relative');
     canvasContainer.style('top', '50px');
@@ -49,7 +49,7 @@ function initializeEarthCanvas() {
     canvasContainer.parent(document.body);
 
     // Create the canvas
-    const canvas = createCanvas(600, 400);
+    const canvas = createCanvas(windowWidth, Math.min(windowWidth * 0.4, 600)); // Dynamic canvas size
     canvas.parent(canvasContainer);
 
     // Draw the Earth image on the canvas
