@@ -1,8 +1,8 @@
 // simulation.js: Main logic for the Methane Visualization
 
 // Global variables for visualization
-let methaneConcentration = 1.9; // Methane concentration in ppm
-let co2Concentration = 420; // CO₂ concentration in ppm
+let methaneConcentration = 1.922; // Methane concentration in ppm
+let co2Concentration = 421; // CO₂ concentration in ppm
 let averageTemperatureC = 14.98; // Average temperature in Celsius
 let averageTemperatureF = (averageTemperatureC * 1.8) + 32; // Converted to Fahrenheit
 

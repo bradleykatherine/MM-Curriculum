@@ -3,12 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Methane Visualization</title>
+  <title>Methane Simulation</title>
+  <!-- Import p5.js library for rendering and interactivity -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <!-- Import custom JavaScript files for the simulation -->
   <script src="earthVisualization.js" defer></script>
-  <script src="particleSimulation.js" defer></script>
   <script src="simulation.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      background: #f4f4f4;
+    }
+
+    #title {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+    }
+
+    #simulation-container {
+      width: 100%;
+      height: auto;
+      background: #000;
+    }
+
+    #controls {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border: 2px solid #333;
+      padding: 15px;
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .checkbox-group {
+      margin-bottom: 15px;
+    }
+
+    .checkbox-group label {
+      margin-left: 10px;
+      font-size: 14px;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
+  <div id="title">Methane Simulation</div>
+  <div id="main-content">
+    <div id="simulation-container"></div>
+    <div id="controls">
+      <div class="checkbox-group">
+        <input type="checkbox" id="show-methane" checked>
+        <label for="show-methane">Show Methane (CH₄)</label>
+      </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="show-co2" checked>
+        <label for="show-co2">Show Carbon Dioxide (CO₂)</label>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
