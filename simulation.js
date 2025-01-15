@@ -19,21 +19,97 @@ function preload() {
 
 // Setup function: Initialize the canvas and interactive elements
 function setup() {
+  // Apply global styles dynamically
+  applyGlobalStyles();
+
+  // Create simulation title
+  createSimulationTitle();
+
+  // Create simulation controls
+  createSimulationControls();
+
   // Create a canvas that adjusts to 90% of the window size
   let canvas = createCanvas(windowWidth * 0.9, windowWidth * 0.4 * 0.9);
-  canvas.parent('simulation-container'); // Attach canvas to container in HTML
-
-  // Add event listener to toggle methane particle visibility
-  select('#show-methane').changed(() => {
-    showMethane = select('#show-methane').checked();
-  });
-
-  // Add event listener to toggle CO₂ particle visibility
-  select('#show-co2').changed(() => {
-    showCO2 = select('#show-co2').checked();
-  });
-
+const canvasContainer = createDivWithId('simulation-container', document.body);
+canvasContainer.style.marginTop = '20px'; // Add space between checkbox container and canvas
+canvas.parent(canvasContainer);
   frameRate(15); // Set frame rate to 15 FPS to slow down animation
+}
+
+// Function to apply global styles dynamically
+function applyGlobalStyles() {
+  document.body.style.fontFamily = 'Arial, sans-serif';
+  document.body.style.margin = '0';
+  document.body.style.padding = '0';
+  document.body.style.display = 'flex';
+  document.body.style.flexDirection = 'column';
+  document.body.style.alignItems = 'center';
+  document.body.style.background = '#f4f4f4';
+}
+
+// Function to create the simulation title dynamically
+function createSimulationTitle() {
+  const title = createDivWithId('title', document.body);
+  title.textContent = 'Methane Simulation';
+  title.style.textAlign = 'center';
+  title.style.margin = '20px 0';
+  title.style.fontSize = '24px';
+  title.style.fontWeight = 'bold';
+  title.style.color = '#333';
+}
+
+// Function to create the simulation controls dynamically
+function createSimulationControls() {
+  const controls = createDivWithId('controls', document.body);
+  controls.style.display = 'flex';
+  controls.style.flexDirection = 'row';
+  controls.style.alignItems = 'flex-start';
+  controls.style.border = '2px solid #333';
+  controls.style.padding = '10px';
+  controls.style.marginTop = '10px';
+  controls.style.background = '#fff';
+  controls.style.borderRadius = '8px';
+  controls.style.boxShadow = '2px 2px 8px rgba(0, 0, 0, 0.2)';
+
+  createCheckboxControl('show-methane', 'Show Methane (CH₄)', controls, true);
+  createCheckboxControl('show-co2', 'Show Carbon Dioxide (CO₂)', controls, true);
+}
+
+// Helper function to create a checkbox control
+function createCheckboxControl(id, labelText, parent, checked) {
+  const checkboxGroup = createDivWithId(null, parent);
+  checkboxGroup.style.display = 'flex';
+  checkboxGroup.style.flexDirection = 'row';
+  checkboxGroup.style.alignItems = 'center';
+  checkboxGroup.style.gap = '5px'; // Add space between checkbox and label
+
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.id = id;
+  checkbox.checked = checked;
+  parent.appendChild(checkbox);
+
+  const label = document.createElement('label');
+  label.htmlFor = id;
+  label.textContent = labelText;
+  label.style.fontSize = '14px';
+  label.style.color = '#000';
+  checkboxGroup.appendChild(label);
+
+  parent.appendChild(checkboxGroup);
+
+  checkbox.addEventListener('change', () => {
+    if (id === 'show-methane') showMethane = checkbox.checked;
+    if (id === 'show-co2') showCO2 = checkbox.checked;
+  });
+}
+
+// Helper function to create a div with an optional ID
+function createDivWithId(id, parent) {
+  const div = document.createElement('div');
+  if (id) div.id = id;
+  parent.appendChild(div);
+  return div;
 }
 
 // Draw function: Render simulation visuals continuously
@@ -66,10 +142,10 @@ function windowResized() {
 function displayConstants() {
   fill(255); // Set text color to white
   textSize(16); // Set text size
-  text(`Temperature: ${temperatureC}°C (${temperatureF.toFixed(1)}°F)`, 10, 20); // Display temperature in Celsius and Fahrenheit
-  text(`Methane: ${methaneConcentration.toFixed(3)} ppm`, 10, height - 60); // Display methane concentration
-  text(`CO₂: ${co2Concentration.toFixed(0)} ppm`, 10, height - 40); // Display CO₂ concentration
-  text(`CO₂ to CH₄ Ratio: ${ratio.toFixed(1)}`, 10, height - 20); // Display CO₂ to CH₄ ratio
+  text(`Average Global Temperature: ${temperatureC}°C (${temperatureF.toFixed(1)}°F)`, 10, 20); // Display temperature in Celsius and Fahrenheit
+  text(`Methane Concentration: ${methaneConcentration.toFixed(3)} ppm`, 10, height - 60); // Display methane concentration
+  text(`Carbon Dioxide Concentration: ${co2Concentration.toFixed(0)} ppm`, 10, height - 40); // Display CO₂ concentration
+  text(`Carbon Dioxide to Methane Ratio: ${ratio.toFixed(1)}`, 10, height - 20); // Display CO₂ to CH₄ ratio
 }
 
 // Draw the Earth image centered and scaled within the canvas bounds
@@ -111,6 +187,5 @@ function drawParticles(concentrationRatio, colorVal) {
     } while (dist(x, y, width / 2, height / 2) > height / 2); // Ensure particles stay within a circular area
 
     ellipse(x, y, 8, 8); // Draw a particle as a circle (size: 8 pixels)
-    // To adjust particle size, change the values `5, 5` to a larger or smaller number
   }
 }
