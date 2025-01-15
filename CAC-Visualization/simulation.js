@@ -51,7 +51,7 @@ function applyGlobalStyles() {
 // Function to create the simulation title dynamically
 function createSimulationTitle() {
   const title = createDivWithId('title', document.body);
-  title.textContent = 'Methane Simulation';
+  title.textContent = 'Current Atmospheric Composition Model';
   title.style.textAlign = 'center';
   title.style.margin = '20px 0';
   title.style.fontSize = '24px';
