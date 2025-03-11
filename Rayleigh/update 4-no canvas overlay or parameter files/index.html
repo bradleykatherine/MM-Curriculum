@@ -14,17 +14,15 @@
   </style>
 </head>
 <body>
-  <!-- Title is added by title.js -->
+  <!-- Title -->
   <script src="title.js"></script>
-  <!-- Canvas is created by utils.js -->
+  <!-- Canvas container and canvas -->
   <script src="utils.js"></script>
-  <!-- This script draws the N2 molecule image -->
+  <!-- Nitrogen molecule -->
   <script src="nitrogen.js"></script>
-  <!-- Sun image is drawn and its parameters stored by sun.js -->
+  <!-- Sun image (which also stores its parameters in window.sunParams) -->
   <script src="sun.js"></script>
-  <!-- Draw the light beams using the stored sun parameters -->
-  <script src="lightBeams.js"></script>
-  <!-- Toggles for beams -->
-  <script src="toggles.js"></script>
+  <!-- Wave beams module (which imports beam parameter files internally) -->
+  <script type="module" src="waveBeams.js"></script>
 </body>
 </html>

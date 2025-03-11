@@ -13,6 +13,9 @@ function createFullViewportContainer(parent, id = 'simulation-container') {
   container.style.display = 'flex';
   container.style.alignItems = 'center';      // vertical centering
   container.style.justifyContent = 'flex-start';// align contents to the left
+  
+  // *** IMPORTANT: Make the container relatively positioned ***
+  container.style.position = 'relative';
 
   // Background matching the rest of the simulation
   container.style.background = '#f4f4f4';
@@ -29,7 +32,7 @@ function initCanvas() {
   const canvas = document.createElement('canvas');
   canvas.id = 'simulationCanvas';
   
-  // Remove the black border and add a shadow identical to the toggles
+  // Remove the black border and add a shadow identical to the toggles.
   canvas.style.boxShadow = '2px 2px 6px rgba(0,0,0,0.2)';
 
   // Set the canvas size to a fraction of the container dimensions
