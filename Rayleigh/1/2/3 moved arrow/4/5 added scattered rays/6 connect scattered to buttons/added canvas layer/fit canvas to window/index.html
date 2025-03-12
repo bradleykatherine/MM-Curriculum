@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rayleigh Scattering Simulation</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    /* A container to hold our layered canvases */
+    #canvasContainer {
+      position: relative;
+      width: 100vw;
+      height: calc(100vh - 48px); /* subtract an estimated title height */
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      /* Optional: add shadows or borders as needed */
+    }
+  </style>
+</head>
+<body>
+  <!-- Title -->
+  <script src="title.js"></script>
+  <!-- Container for the canvases -->
+  <div id="canvasContainer"></div>
+  
+  <!-- Scripts that set up the canvases and simulation -->
+  <script src="utils.js"></script>
+  <script src="nitrogen.js"></script>
+  <script src="sun.js"></script>
+  <script src="colorSelector.js"></script>
+  <script src="scatteredParams.js"></script>
+  <script src="scatteredRays.js"></script>
+  <script type="module" src="drawIncomingSolar.js"></script>
+</body>
+</html>

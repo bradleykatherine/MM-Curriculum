@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rayleigh Scattering Simulation</title>
+  <style>
+    /* Remove default margins/padding and set a background */
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+  <!-- Title -->
+  <script src="title.js"></script>
+  <!-- Canvas container and canvas -->
+  <script src="utils.js"></script>
+  <!-- Nitrogen molecule -->
+  <script src="nitrogen.js"></script>
+  <!-- Sun image (and store its parameters) -->
+  <script src="sun.js"></script>
+  <!-- Color selector (radio buttons) -->
+  <script src="colorSelector.js"></script>
+  <!-- Parameters for scattered rays -->
+  <script src="scatteredParams.js"></script>
+  <!-- Drawing scattered rays -->
+  <script src="scatteredRays.js"></script>
+  <!-- Draw incoming solar beam (single beam) -->
+  <script type="module" src="drawIncomingSolar.js"></script>
+</body>
+</html>
