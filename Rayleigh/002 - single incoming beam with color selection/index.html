@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rayleigh Scattering Simulation</title>
   <style>
-    /* Remove default browser margins/padding and set a global background */
+    /* Remove default margins/padding and set a background */
     html, body {
       margin: 0;
       padding: 0;
@@ -14,17 +14,17 @@
   </style>
 </head>
 <body>
-  <!-- Title is added by title.js -->
+  <!-- Title -->
   <script src="title.js"></script>
-  <!-- Canvas is created by utils.js -->
+  <!-- Canvas container and canvas -->
   <script src="utils.js"></script>
-  <!-- This script draws the N2 molecule image -->
+  <!-- Nitrogen molecule -->
   <script src="nitrogen.js"></script>
-  <!-- Sun image is drawn and its parameters stored by sun.js -->
+  <!-- Sun image (and store its parameters) -->
   <script src="sun.js"></script>
-  <!-- Draw the light beams using the stored sun parameters -->
-  <script src="lightBeams.js"></script>
-  <!-- Toggles for beams -->
-  <script src="toggles.js"></script>
+  <!-- Color selector (radio buttons) -->
+  <script src="colorSelector.js"></script>
+  <!-- Draw incoming solar beam (single beam) -->
+  <script type="module" src="drawIncomingSolar.js"></script>
 </body>
 </html>

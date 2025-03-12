@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Create a container for the toggles and position it to the right.
   const toggleContainer = document.createElement('div');
   toggleContainer.id = 'toggleContainer';
-  
   toggleContainer.style.position = 'fixed';
-  toggleContainer.style.top = '60px'; // Adjust if needed (below the title)
+  toggleContainer.style.top = '60px';
   toggleContainer.style.right = '20px';
   toggleContainer.style.background = '#f4f4f4';
   toggleContainer.style.padding = '10px';
@@ -18,18 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
   heading.style.textAlign = 'center';
   toggleContainer.appendChild(heading);
   
-  // List of beam colors.
   const beamColors = ['red', 'orange', 'yellow', 'green', 'blue', 'violet'];
   
-  // Initialize a global object to hold toggle states.
   if (!window.beamToggles) {
     window.beamToggles = {};
-    beamColors.forEach(color => {
-      window.beamToggles[color] = true;
-    });
+    beamColors.forEach(color => { window.beamToggles[color] = true; });
   }
   
-  // Create a checkbox for each beam color.
   beamColors.forEach(color => {
     const label = document.createElement('label');
     label.style.display = 'block';
@@ -43,9 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     checkbox.addEventListener('change', () => {
       window.beamToggles[color] = checkbox.checked;
-      if (window.refreshBeams) {
-        window.refreshBeams();
-      }
+      // If toggles should redraw beams, call a refresh function here.
+      if (window.refreshBeams) window.refreshBeams();
     });
     
     label.appendChild(checkbox);
